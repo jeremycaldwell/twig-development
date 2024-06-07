@@ -254,3 +254,11 @@ jQuery is optional
 
 })(jQuery, Drupal, once);
 ```
+---
+### Create background image from media image
+
+```
+{% set bg_image = content.field_background_image|render ? file_url(content.field_background_image[0]['#media'].field_media_image.entity.uri.value) : null %}
+<div {{ wrapper.addClass(classes) }}{% if bg_image %} style="background-image: url('{{ bg_image }}');"{% endif %}>
+</div>
+```
