@@ -262,3 +262,13 @@ jQuery is optional
 <div {{ wrapper.addClass(classes) }}{% if bg_image %} style="background-image: url('{{ bg_image }}');"{% endif %}>
 </div>
 ```
+
+---
+### If there is no link text, attempt to get the entity title from the URL.
+
+{% set url = item.content['#url'] %}
+{% if not text and url.isRouted() %}
+  {% set text = getTitleFromEntityUrl(url) %}
+{% endif %}
+{% text %}
+
